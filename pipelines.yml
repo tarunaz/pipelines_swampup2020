@@ -6,7 +6,7 @@ resources:
       path: tarunaz/pipelines_swampup2020
       branches:
         include: master
-  - name: DockerAppImage
+  - name: dockerAppImage
     type: Image
     configuration:
       registry: Artifactory_tarunm
@@ -14,7 +14,7 @@ resources:
       imageName: docker.artifactory-unified.soleng-us.jfrog.team/ausdod_docker_app_demo
       imageTag: '${run_number}'
       autoPull: true
-  - name: dockerBuildInfo
+  - name: DockerBuildInfo
     type: BuildInfo
     configuration:
       sourceArtifactory: Artifactory_tarunm
