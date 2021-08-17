@@ -18,7 +18,7 @@ RUN curl $REGISTRY/libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar 
 RUN curl $REGISTRY/npm-dev-local/frontend/-/frontend-3.0.0.tgz --output client1.tgz
 
 #Extract vue app
-RUN tar -xzf client1.tgz && rm client1.tgz
+RUN tar -xvf client1.tgz && rm client1.tgz
 
 WORKDIR "package"
 
