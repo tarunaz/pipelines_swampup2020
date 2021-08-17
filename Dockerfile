@@ -1,5 +1,5 @@
 #Download image from artifactory
-ARG REGISTRY=docker.artifactory
+#ARG REGISTRY=docker.artifactory
 
 #FROM openjdk:11-jdk
 FROM $REGISTRY/openjdk:11-jdk
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get upgrade -y && \
 WORKDIR /app
 
 #Define ARG Again -ARG variables declared before the first FROM need to be declered again
-ARG REGISTRY=http://artifactory-unified.soleng-us.jfrog.team/artifactory
+#ARG REGISTRY=http://artifactory-unified.soleng-us.jfrog.team/artifactory
 MAINTAINER Shani Levy
 
 # Download artifacts from Artifactory
