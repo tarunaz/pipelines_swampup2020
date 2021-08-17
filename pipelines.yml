@@ -87,12 +87,12 @@ pipelines:
           affinityGroup: fmkGroup
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: docker.${ArtIP}/swampup_docker_app_demo
+          dockerImageName: docker.${ArtIP}/ausdod_docker_app_demo
           dockerImageTag: '${run_number}'
           integrations:
             - name: ArtifactoryUnified
           inputResources:
-            - name: myGitRepo
+            - name: gitRepo
               trigger: false
           outputResources:
             - name: dockerAppImage
@@ -101,10 +101,10 @@ pipelines:
             - name: publish_frontend #bld_frontend
         execution:
           onStart:
-            - sed -i "s/docker.artifactory/docker.${ArtIP}/" $res_myGitRepo_resourcePath/Dockerfile
-            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/${ArtIP}/" $res_myGitRepo_resourcePath/Dockerfile
-            - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/Dockerfile
-            - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/Dockerfile
+            - sed -i "s/docker.artifactory/docker.${ArtIP}/" $res_gitRepo_resourcePath/Dockerfile
+            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/${ArtIP}/" $res_gitRepo_resourcePath/Dockerfile
+            - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_gitRepo_resourcePath/Dockerfile
+            - sed -i "s/1.0.0/$previous_backend_ver/g" $res_gitRepo_resourcePath/Dockerfile
           onComplete:
             - echo $step_env_var2
             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
