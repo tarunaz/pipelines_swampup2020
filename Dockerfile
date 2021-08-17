@@ -12,7 +12,7 @@ WORKDIR /app
 
 #Define ARG Again -ARG variables declared before the first FROM need to be declered again
 ARG REGISTRY=http://artifactory-unified.soleng-us.jfrog.team/artifactory
-MAINTAINER Shani Levy
+MAINTAINER Tarun Mehra
 
 # Download artifacts from Artifactory
 RUN curl $REGISTRY/libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server1.jar

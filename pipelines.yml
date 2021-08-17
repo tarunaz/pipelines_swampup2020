@@ -11,7 +11,7 @@ resources:
     configuration:
       registry: Artifactory_tarunm
       sourceRepository: docker
-      imageName: docker.artifactory-unified.soleng-us.jfrog.team/ausdod_docker_app_demo
+      imageName: docker.artifactory-unified.soleng-us.jfrog.team/aus_dod_docker_app_demo
       imageTag: '${run_number}'
       autoPull: true
   - name: DockerBuildInfo
@@ -21,7 +21,7 @@ resources:
       buildName: SampleApp
       buildNumber: 1
 pipelines:
-  - name: ausdod_docker_app_pipeline
+  - name: aus_dod_docker_app_pipeline
     configuration:
       environmentVariables:
         readOnly:
@@ -87,7 +87,7 @@ pipelines:
           affinityGroup: fmkGroup
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: docker.${ArtIP}/ausdod_docker_app_demo
+          dockerImageName: docker.${ArtIP}/aus_dod_docker_app_demo
           dockerImageTag: '${run_number}'
           integrations:
             - name: Artifactory_tarunm
