@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 pipelines:
-  - name: swampup_docker_app_pipeline
+  - name: ausdod_docker_app_pipeline
     configuration:
       environmentVariables:
         readOnly:
