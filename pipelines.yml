@@ -2,7 +2,7 @@ resources:
   - name: gitRepo
     type: GitRepo
     configuration:
-      gitProvider: Github_SolEng
+      gitProvider: tarunm_github
       path: tarunaz/pipelines_swampup2020
       branches:
         include: master
