@@ -7,13 +7,13 @@ resources:
       branches:
         include: master
   - name: DockerAppImage
-      type: Image
-      configuration:
-        registry: ArtifactoryUnified
-        sourceRepository: docker
-        imageName: docker.artifactory-unified.soleng-us.jfrog.team/ausdod_docker_app_demo
-        imageTag: '${run_number}'
-        autoPull: true
+    type: Image
+    configuration:
+      registry: ArtifactoryUnified
+      sourceRepository: docker
+      imageName: docker.artifactory-unified.soleng-us.jfrog.team/ausdod_docker_app_demo
+      imageTag: '${run_number}'
+      autoPull: true
 pipelines:
   - name: ausdod_docker_app_pipeline
     configuration:
