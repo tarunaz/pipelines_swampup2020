@@ -14,7 +14,7 @@ resources:
       imageName: docker.artifactory-unified.soleng-us.jfrog.team/ausdod_docker_app_demo
       imageTag: '${run_number}'
       autoPull: true
-  - name: buildInfo
+  - name: dockerBuildInfo
     type: BuildInfo
     configuration:
       sourceArtifactory: Artifactory_tarunm
@@ -120,4 +120,4 @@ pipelines:
           inputSteps:
             - name: bld_docker_app
           outputResources:
-            - name: buildInfo
+            - name: dockerBuildInfo
