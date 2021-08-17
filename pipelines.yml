@@ -90,7 +90,7 @@ pipelines:
           dockerImageName: docker.${ArtIP}/ausdod_docker_app_demo
           dockerImageTag: '${run_number}'
           integrations:
-            - name: ArtifactoryUnified
+            - name: Artifactory_tarunm
           inputResources:
             - name: gitRepo
               trigger: false
