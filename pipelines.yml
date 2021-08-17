@@ -18,7 +18,7 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: Artifactory_tarunm
-      buildName: SampleApp
+      buildName: DockerApp
       buildNumber: 1
 pipelines:
   - name: ausdod_docker_app_pipeline
