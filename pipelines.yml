@@ -6,7 +6,7 @@ resources:
       path: tarunaz/pipelines_swampup2020
       branches:
         include: master
-  - name: dockerAppImage
+  - name: DockerAppImage
     type: Image
     configuration:
       registry: Artifactory_tarunm
@@ -120,4 +120,4 @@ pipelines:
           inputSteps:
             - name: bld_docker_app
           outputResources:
-            - name: dockerBuildInfo
+            - name: DockerBuildInfo
