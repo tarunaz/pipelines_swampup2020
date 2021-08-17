@@ -5,6 +5,6 @@ resolver:
   releaseRepo: libs-release
   serverID: Default-Server
 deployer:
-  snapshotRepo: libs-snapshot-local
-  releaseRepo: libs-release-local
+  snapshotRepo: tarun-libs-snapshot-local
+  releaseRepo: tarun-libs-release-local
   serverID: Default-Server

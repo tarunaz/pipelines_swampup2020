@@ -15,8 +15,8 @@ ARG REGISTRY=http://artifactory-unified.soleng-us.jfrog.team/artifactory
 MAINTAINER Tarun Mehra
 
 # Download artifacts from Artifactory
-RUN curl $REGISTRY/libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server1.jar
-RUN curl $REGISTRY/npm-dev-local/frontend/-/frontend-3.0.0.tgz --output client1.tgz
+RUN curl $REGISTRY/tarun-libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server1.jar
+RUN curl $REGISTRY/tarun-npm-dev-local/frontend/-/frontend-3.0.0.tgz --output client1.tgz
 
 #Extract vue app
 RUN tar -xzf client1.tgz && rm client1.tgz

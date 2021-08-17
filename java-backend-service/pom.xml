@@ -114,8 +114,8 @@
 								<username>${username}</username>
 								<password>${password}</password>
 								<excludePatterns>*-tests.jar</excludePatterns>
-								<repoKey>libs-release-local</repoKey>
-								<snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+								<repoKey>tarun-libs-release-local</repoKey>
+								<snapshotRepoKey>tarun-libs-snapshot-local</snapshotRepoKey>
 							</publisher>
 							<buildInfo>
 								<buildName>plugin-demo</buildName>
