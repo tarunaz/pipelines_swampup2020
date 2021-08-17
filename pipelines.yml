@@ -6,7 +6,7 @@ resources:
       path: tarunaz/pipelines_swampup2020
       branches:
         include: master
-  - name: DockerAppImage
+  - name: dockerAppImage
     type: Image
     configuration:
       registry: ArtifactoryUnified
@@ -89,7 +89,7 @@ pipelines:
             - name: myGitRepo
               trigger: false
           outputResources:
-            - name: DockerAppImage
+            - name: dockerAppImage
           inputSteps:
             - name: bld_backend
             - name: publish_frontend #bld_frontend
