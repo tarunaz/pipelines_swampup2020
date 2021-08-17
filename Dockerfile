@@ -1,5 +1,8 @@
 #Download image from artifactory
 ARG REGISTRY=docker.artifactory
+ARG API_KEY=AKCp8jQTfUNGeKVbAax8tgZUTmJE5nU1kaqj6HdWoiCYR2ASoL9HatYFkijAenFLRMzjCz3fg
+ARG USER=tarunm
+
 #FROM openjdk:11-jdk
 FROM $REGISTRY/openjdk:11-jdk
 
@@ -14,8 +17,8 @@ ARG REGISTRY=http://artifactory-unified.soleng-us.jfrog.team/artifactory
 MAINTAINER Shani Levy
 
 # Download artifacts from Artifactory
-RUN curl -u tarunm:AKCp8jQTfUNGeKVbAax8tgZUTmJE5nU1kaqj6HdWoiCYR2ASoL9HatYFkijAenFLRMzjCz3fg $REGISTRY/libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server1.jar
-RUN curl -u tarunm:AKCp8jQTfUNGeKVbAax8tgZUTmJE5nU1kaqj6HdWoiCYR2ASoL9HatYFkijAenFLRMzjCz3fg $REGISTRY/npm-dev-local/frontend/-/frontend-3.0.0.tgz --output client1.tgz
+RUN curl -u $USER:$API_KEY $REGISTRY/libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server1.jar
+RUN curl -u $USER:$API_KEY $REGISTRY/npm-dev-local/frontend/-/frontend-3.0.0.tgz --output client1.tgz
 
 #Extract vue app
 RUN tar -xvf client1.tgz && rm client1.tgz
