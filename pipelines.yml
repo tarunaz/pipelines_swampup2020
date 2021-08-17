@@ -63,7 +63,7 @@ pipelines:
         configuration:
           npmArgs: --no-progress --no-audit
           sourceLocation: npm-frontend-service
-          repositoryName: tarun-npm-dev-local
+          repositoryName: npm
           inputResources:
             - name: gitRepo
               trigger: false
