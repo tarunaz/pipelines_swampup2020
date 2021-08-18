@@ -121,3 +121,9 @@ pipelines:
             - name: bld_docker_app
           outputResources:
             - name: DockerBuildInfo
+      - name: deploy_vm
+        type: VmCluster
+        configuration:
+          sshKey: demo_ssh
+          targets:
+            - 130.211.121.141
