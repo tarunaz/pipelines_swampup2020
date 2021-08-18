@@ -120,10 +120,10 @@ pipelines:
             - name: docker_build
           outputResources:
             - name: docker_image
-          - name: publish_build_info
-            type: PublishBuildInfo
-            configuration:
-              inputSteps:
-                - name: docker_push
-              outputResources:
-                - name: docker_build_info
+      - name: publish_build_info
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: docker_push
+          outputResources:
+            - name: docker_build_info
