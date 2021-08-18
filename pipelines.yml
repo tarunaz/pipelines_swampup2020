@@ -118,7 +118,6 @@ pipelines:
           affinityGroup: fmkGroup
           targetRepository: docker
           forceXrayScan: false
-          autoPublishBuildInfo: true
           integrations:
             - name: ArtifactoryTarun
           inputSteps:
