@@ -6,20 +6,26 @@ resources:
       path: tarunaz/pipelines_swampup2020
       branches:
         include: master
-  - name: dockerAppImage
+  - name: docker_image
     type: Image
     configuration:
       registry: ArtifactoryTarun
       sourceRepository: docker
       imageName: docker.artifactory-unified.soleng-us.jfrog.team/aus_dod_docker_app_demo
-      imageTag: '${run_number}'
+      imageTag: ${run_number}
       autoPull: true
-  - name: DockerBuildInfo
+  - name: docker_build_info
     type: BuildInfo
     configuration:
       sourceArtifactory: ArtifactoryTarun
       buildName: SampleApp
       buildNumber: 1
+  - name: deploy_vm
+    type: VmCluster
+    configuration:
+      sshKey: demo_ssh
+      targets:
+        - 34.133.42.248
 pipelines:
   - name: aus_dod_docker_app_pipeline
     configuration:
@@ -81,21 +87,19 @@ pipelines:
             - name: bld_frontend
           integrations:
             - name: ArtifactoryTarun
-      - name: bld_docker_app
+      - name: docker_build
         type: DockerBuild
         configuration:
           affinityGroup: fmkGroup
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: docker.${ArtIP}/aus_dod_docker_app_demo
-          dockerImageTag: '${run_number}'
+          dockerImageName: docker.${ArtIP}/ausdod_docker_app_demo
+          dockerImageTag: ${run_number}
           integrations:
             - name: ArtifactoryTarun
           inputResources:
             - name: gitRepo
               trigger: false
-          outputResources:
-            - name: dockerAppImage
           inputSteps:
             - name: bld_backend
             - name: publish_frontend
@@ -108,7 +112,7 @@ pipelines:
           onComplete:
             - echo $step_env_var2
             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
-      - name: push_docker_app
+      - name: docker_push
         type: DockerPush
         configuration:
           affinityGroup: fmkGroup
@@ -118,6 +122,14 @@ pipelines:
           integrations:
             - name: ArtifactoryTarun
           inputSteps:
-            - name: bld_docker_app
+            - name: docker_build
           outputResources:
-            - name: DockerBuildInfo
+            - name: docker_image
+      - name: publish_build_info
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: docker_push
+          outputResources:
+            - name: docker_build_info
+
