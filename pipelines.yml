@@ -9,7 +9,7 @@ resources:
   - name: dockerAppImage
     type: Image
     configuration:
-      registry: Artifactory_tarunm
+      registry: ArtifactoryTarun
       sourceRepository: docker
       imageName: docker.artifactory-unified.soleng-us.jfrog.team/aus_dod_docker_app_demo
       imageTag: '${run_number}'
@@ -17,7 +17,7 @@ resources:
   - name: DockerBuildInfo
     type: BuildInfo
     configuration:
-      sourceArtifactory: Artifactory_tarunm
+      sourceArtifactory: ArtifactoryTarun
       buildName: SampleApp
       buildNumber: 1
 pipelines:
@@ -26,7 +26,7 @@ pipelines:
       environmentVariables:
         readOnly:
           my_env_var: '1.0.$run_number'
-          ArtIP: $(echo ${int_Artifactory_tarunm_url}|awk -F '/' '{print $3}'|awk -F ':' '{print $1}')
+          ArtIP: $(echo ${int_ArtifactoryTarun_url}|awk -F '/' '{print $3}'|awk -F ':' '{print $1}')
     steps:
       - name: bld_backend
         type: MvnBuild
@@ -40,7 +40,7 @@ pipelines:
             - name: gitRepo
               trigger: false
           integrations:
-            - name: Artifactory_tarunm
+            - name: ArtifactoryTarun
           runtime:
             type: image
             image:
@@ -53,7 +53,7 @@ pipelines:
             - javac -version
             - mvn --version
             - add_pipeline_variables previous_backend_ver=${my_env_var}
-            - sed -ie 's/Default-Server/Artifactory_tarunm/g' $res_gitRepo_resourcePath/java-backend-service/mvn-art-config
+            - sed -ie 's/Default-Server/ArtifactoryTarun/g' $res_gitRepo_resourcePath/java-backend-service/mvn-art-config
             - sed -ie "s/1.0.0/$my_env_var/g" $res_gitRepo_resourcePath/java-backend-service/pom.xml
           onComplete:
             - echo $run_var
@@ -68,7 +68,7 @@ pipelines:
             - name: gitRepo
               trigger: false
           integrations:
-            - name: Artifactory_tarunm
+            - name: ArtifactoryTarun
         execution:
           onStart:
             - add_pipeline_variables previous_frontend_ver=${my_env_var}
@@ -80,7 +80,7 @@ pipelines:
           inputSteps:
             - name: bld_frontend
           integrations:
-            - name: Artifactory_tarunm
+            - name: ArtifactoryTarun
       - name: bld_docker_app
         type: DockerBuild
         configuration:
@@ -90,7 +90,7 @@ pipelines:
           dockerImageName: docker.${ArtIP}/aus_dod_docker_app_demo
           dockerImageTag: '${run_number}'
           integrations:
-            - name: Artifactory_tarunm
+            - name: ArtifactoryTarun
           inputResources:
             - name: gitRepo
               trigger: false
@@ -116,7 +116,7 @@ pipelines:
           forceXrayScan: false
           autoPublishBuildInfo: true
           integrations:
-            - name: Artifactory_tarunm
+            - name: ArtifactoryTarun
           inputSteps:
             - name: bld_docker_app
           outputResources:
