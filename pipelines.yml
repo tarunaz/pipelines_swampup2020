@@ -97,8 +97,6 @@ pipelines:
           inputSteps:
             - name: bld_backend
             - name: publish_frontend
-          outputResources:
-            - name: docker_image
         execution:
           onStart:
             - sed -i "s/docker.artifactory/docker.${ArtIP}/" $res_gitRepo_resourcePath/Dockerfile
